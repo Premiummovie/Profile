@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUZAHIDUL ISLAM | Digital Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary-color: #f8fafc;
+            --text-color: #1e293b;
+            --light-text: #64748b;
+            --bg-color: #ffffff;
+            --card-bg: #f1f5f9;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .profile-card {
+            background-color: var(--bg-color);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .profile-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .profile-bio {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .link-card {
+            background-color: var(--bg-color);
+            border-radius: var(--border-radius);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .link-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .link-card:hover::after {
+            opacity: 1;
+        }
+
+        .link-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.25rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .link-card:hover .link-icon {
+            background-color: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        .link-content {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .link-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+
+        .link-description {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            line-height: 1.5;
+        }
+
+        .link-card:hover .link-description {
+            color: var(--light-text);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 1.5rem;
+            color: var(--light-text);
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .profile-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .profile-bio {
+                max-width: 100%;
+            }
+            
+            .link-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 1rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-card, .link-card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(4) { animation-delay: 0.4s; }
+        .link-card:nth-child(5) { animation-delay: 0.5s; }
+        .link-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Ad container styles */
+        .ad-container {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Ad (300×250) -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '674846739dd454e40f89892202117c13',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/674846739dd454e40f89892202117c13/invoke.js"></script>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://i.postimg.cc/633mnyMx/Screenshot-20240325-173604-1.jpg" alt="Alex Johnson" class="profile-pic" id="profile-pic">
+            <h1 class="profile-name" id="profile-name">MUZAHIDUL ISLAM</h1>
+            <div class="profile-title" id="profile-title"> Junior UX Designer & Developer</div>
+            <p class="profile-bio" id="profile-bio"> I am a Bangladeshi Web-Developer, If you want to create any website or landing page contract with me..</p>
+            
+            <div class="social-links">
+                <a href="https://twitter.com" class="social-link" id="twitter-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com" class="social-link" id="linkedin-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://dribbble.com" class="social-link" id="dribbble-link" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                <a href="https://github.com" class="social-link" id="github-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://medium.com" class="social-link" id="medium-link" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
+            </div>
+        </div>
+
+        <!-- Middle Ad (320×50) -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '7c3ce7661b6276032ffb29201de896cb',
+                    'format': 'iframe',
+                    'height': 50,
+                    'width': 320,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/7c3ce7661b6276032ffb29201de896cb/invoke.js"></script>
+        </div>
+
+        <div class="links-container" id="links-container">
+            <!-- Links will be added here dynamically -->
+        </div>
+
+        <!-- Bottom Ad (Native) -->
+        <div class="ad-container">
+            <script async="async" data-cfasync="false" src="//pl27320837.profitableratecpm.com/cc2a810a45805db35a111260ba3ecd62/invoke.js"></script>
+            <div id="container-cc2a810a45805db35a111260ba3ecd62"></div>
+        </div>
+
+        <footer>
+            <p>© <span id="current-year"></span> Muzahidul islam. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Professional profile data
+        const profileData = {
+            name: "Alex Johnson",
+            title: "Senior UX Designer & Developer",
+            bio: "Creating digital experiences that matter. 8+ years helping startups and Fortune 500 companies design and build better products.",
+            profilePic: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80",
+            socialLinks: {
+                twitter: "https://twitter.com",
+                linkedin: "https://linkedin.com/in/alexjohnson",
+                dribbble: "https://dribbble.com/alexjohnson",
+                github: "https://github.com/alexjohnson",
+                medium: "https://medium.com/@alexjohnson"
+            },
+            links: [
+                {
+                    title: "Portfolio Website",
+                    url: "https://t.co/qS8VI9BhFz",
+                    description: "View my latest projects and case studies",
+                    icon: "fas fa-briefcase",
+                    badge: "Featured"
+                },
+                {
+                    title: "Today Offer 🔥",
+                    url: "https://premiummovie.github.io/Crypto-/",
+                    description: "Claim 10$ USDT bonus",
+                    icon: "fas fa-graduation-cap"
+                },
+                {
+                    title: "10$-100$ Bonus",
+                    url: "https://premiummovie.github.io/2Clicker/",
+                    description: "Free UI kits, templates, and design tools",
+                    icon: "fas fa-palette"
+                },
+                {
+                    title: "Book a Consultation",
+                    url: "https://t.co/qS8VI9BhFz",
+                    description: "30-minute free consultation for your project",
+                    icon: "fas fa-calendar-check",
+                    badge: "New"
+                },
+                {
+                    title: "Email Me",
+                    url: "https://t.co/qS8VI9BhFz",
+                    description: "For business inquiries and collaborations",
+                    icon: "fas fa-envelope"
+                },
+                {
+                    title: "Resume & CV",
+                    url: "https://t.co/qS8VI9BhFz",
+                    description: "Download my professional resume (PDF)",
+                    icon: "fas fa-file-pdf"
+                }
+            ]
+        };
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Set profile data
+        document.getElementById('profile-name').textContent = profileData.name;
+        document.getElementById('profile-title').textContent = profileData.title;
+        document.getElementById('profile-bio').textContent = profileData.bio;
+        document.getElementById('profile-pic').src = profileData.profilePic;
+        document.getElementById('profile-pic').alt = profileData.name;
+
+        // Set social links
+        document.getElementById('twitter-link').href = profileData.socialLinks.twitter;
+        document.getElementById('linkedin-link').href = profileData.socialLinks.linkedin;
+        document.getElementById('dribbble-link').href = profileData.socialLinks.dribbble;
+        document.getElementById('github-link').href = profileData.socialLinks.github;
+        document.getElementById('medium-link').href = profileData.socialLinks.medium;
+
+        // Generate links
+        const linksContainer = document.getElementById('links-container');
+        
+        profileData.links.forEach(link => {
+            const linkElement = document.createElement('a');
+            linkElement.className = 'link-card';
+            linkElement.href = link.url;
+            linkElement.target = '_blank';
+            linkElement.rel = 'noopener noreferrer';
+            
+            let badgeHtml = '';
+            if (link.badge) {
+                badgeHtml = `<span class="badge">${link.badge}</span>`;
+            }
+            
+            linkElement.innerHTML = `
+                <div class="link-icon">
+                    <i class="${link.icon}"></i>
+                </div>
+                <div class="link-content">
+                    <div class="link-title">${link.title}</div>
+                    <div class="link-description">${link.description}</div>
+                    ${badgeHtml}
+                </div>
+            `;
+            
+            linksContainer.appendChild(linkElement);
+        });
+
+        // Add click tracking (optional)
+        document.querySelectorAll('.link-card').forEach(link => {
+            link.addEventListener('click', function() {
+                // Here you could add analytics tracking
+                console.log('Link clicked:', this.href);
+            });
+        });
+    </script>
+</body>
+</html>
